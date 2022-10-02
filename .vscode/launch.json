@@ -1,20 +1,56 @@
 {
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
-      "type": "pwa-chrome",
+      "type": "msedge",
       "request": "launch",
-      "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "name": "Open index.html",
+      "file": "/home/rafae/code/ag/angular-crash/src/index.html"
     },
     {
-      "name": "ng test",
-      "type": "chrome",
+      "type": "pwa-msedge",
+      "name": "Launch Microsoft Edge",
       "request": "launch",
-      "preLaunchTask": "npm: test",
-      "url": "http://localhost:9876/debug.html"
+      "runtimeArgs": ["--remote-debugging-port=9222"],
+      "url": "localhost:4200/",
+      "presentation": {
+        "hidden": true
+      }
+    },
+    {
+      "type": "pwa-msedge",
+      "name": "Launch Microsoft Edge in headless mode",
+      "request": "launch",
+      "runtimeArgs": ["--headless", "--remote-debugging-port=9222"],
+      "url": "localhost:4200",
+      "presentation": {
+        "hidden": true
+      }
+    },
+    {
+      "type": "vscode-edge-devtools.debug",
+      "name": "Open Edge DevTools",
+      "request": "attach",
+      "url": "localhost:4200/",
+      "presentation": {
+        "hidden": true
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Edge Headless and attach DevTools",
+      "configurations": [
+        "Launch Microsoft Edge in headless mode",
+        "Open Edge DevTools"
+      ]
+    },
+    {
+      "name": "Launch Edge and attach DevTools",
+      "configurations": ["Launch Microsoft Edge", "Open Edge DevTools"]
     }
   ]
 }
